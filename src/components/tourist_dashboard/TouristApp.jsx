@@ -109,15 +109,16 @@ export default function TouristApp() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-800 text-white flex flex-col md:flex-row">
+    <div className="min-h-screen bg-slate-800 text-white flex">
       <Sidebar view={view} setView={setView} userInfo={userInfo} />
       
-      <main className="flex-1 overflow-auto pb-20 md:pb-0">
+      <main className="flex-1 overflow-auto md:ml-0 min-h-screen">
         <motion.div
           key={view}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
+          className="pb-20 md:pb-6"
         >
           {renderView()}
         </motion.div>

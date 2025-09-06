@@ -34,10 +34,10 @@ export default function Sidebar({ view, setView, userInfo }) {
 
       {/* Sidebar */}
       <aside className={`
-        fixed md:relative top-0 left-0 h-full w-64 bg-slate-900 text-white p-3 flex flex-col gap-6 z-40 transform transition-transform duration-300
+        fixed md:relative top-0 left-0 h-screen w-64 bg-slate-900 text-white p-3 flex flex-col gap-6 z-40 transform transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
-        <div className="flex items-center gap-3 pt-12 md:pt-0">
+        <div className="flex items-center gap-3 pt-16 md:pt-0">
           <div className="bg-emerald-500/20 p-2 rounded-lg border border-emerald-500/30">
             <Icon name="User" size={20} className="text-emerald-400" />
           </div>
@@ -83,7 +83,7 @@ export default function Sidebar({ view, setView, userInfo }) {
           </ul>
         </nav>
 
-        <div className="text-xs text-slate-400">
+        <div className="text-xs text-slate-400 mt-auto">
           Tourist v1.0
         </div>
       </aside>
