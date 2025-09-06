@@ -1,4 +1,5 @@
 import React from "react";
+import Icon from "./Icon.jsx";
 
 export default function Overview({ data, setView, setItineraryForm }) {
   const { qrCart, acceptedTourists, groups, itineraries, workers } = data;

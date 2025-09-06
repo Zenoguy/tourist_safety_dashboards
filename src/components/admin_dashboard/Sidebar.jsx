@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "./Icon";
+import Icon from "./Icon.jsx";
 
 export default function Sidebar({ view, setView, data }) {
   const pendingQRCount = data.qrCart.filter(item => item.status === "pending").length;

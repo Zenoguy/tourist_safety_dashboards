@@ -1,7 +1,7 @@
 import React from "react";
 import QRCode from "react-qr-code";
 import { motion } from "framer-motion";
-import Icon from "./Icon";
+import Icon from "./Icon.jsx";
 
 export default function QRCartPanel({ data, acceptTourist, rejectTourist }) {
   const pendingQRs = data.qrCart.filter(item => item.status === "pending");

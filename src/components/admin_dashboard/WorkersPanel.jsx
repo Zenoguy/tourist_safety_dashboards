@@ -1,4 +1,5 @@
 import React from "react";
+import Icon from "./Icon.jsx";
 
 export default function WorkersPanel({ data }) {
   const { workers } = data;

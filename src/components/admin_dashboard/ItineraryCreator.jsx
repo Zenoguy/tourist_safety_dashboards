@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Icon from "./Icon";
+import Icon from "./Icon.jsx";
 
 export default function ItineraryCreator({ 
   isOpen, 

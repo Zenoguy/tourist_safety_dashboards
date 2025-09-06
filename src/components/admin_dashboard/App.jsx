@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { initialData } from "./data/initialData.js";
-import Sidebar from "./components/Sidebar";
-import Overview from "./components/Overview";
-import QRCartPanel from "./components/QRCartPanel";
-import TouristsPanel from "./components/TouristsPanel";
-import ItinerariesPanel from "./components/ItinerariesPanel";
-import WorkersPanel from "./components/WorkersPanel";
-import ItineraryCreator from "./components/ItineraryCreator";
+import { motion } from "framer-motion";
+
+// Update these import paths (add ./ since they're in the same folder now):
+import Sidebar from "./Sidebar.jsx";
+import Overview from "./Overview.jsx";
+import QRCartPanel from "./QRCartPanel.jsx";
+import TouristsPanel from "./TouristsPanel.jsx";
+import ItinerariesPanel from "./ItinerariesPanel.jsx";
+import WorkersPanel from "./WorkersPanel.jsx";
+import ItineraryCreator from "./ItineraryCreator.jsx";
 
 /*
   Smart Tourist Admin Dashboard - QR Cart System:
@@ -23,6 +25,8 @@ import ItineraryCreator from "./components/ItineraryCreator";
   - Automatic group formation
   - Itinerary management for accepted tourists
 */
+// Update the data import path (go up two levels to reach src/data):
+import { initialData } from "../../data/initialData.js";
 
 export default function SmartTouristDashboard() {
   const [view, setView] = useState("overview");

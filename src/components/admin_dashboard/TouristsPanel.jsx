@@ -1,7 +1,7 @@
 import React from "react";
 import QRCode from "react-qr-code";
 import { motion } from "framer-motion";
-import Icon from "./Icon";
+import Icon from "./Icon.jsx";
 
 export default function TouristsPanel({ data, handleTouristClick, setItineraryForm }) {
   const { acceptedTourists, groups } = data;

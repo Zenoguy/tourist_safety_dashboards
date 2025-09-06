@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "./Icon";
+import Icon from "./Icon.jsx";
 
 export default function ItinerariesPanel({ data, selectedTourist, setSelectedTourist }) {
   const { itineraries, acceptedTourists, workers } = data;
