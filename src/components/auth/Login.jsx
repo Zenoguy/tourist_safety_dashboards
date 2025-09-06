@@ -72,11 +72,22 @@ export default function Login() {
   const mockLogin = async (credentials, role) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        // Mock validation
-        if (credentials.email === "test@example.com" && credentials.password === "password") {
+        // Mock validation with role-specific credentials
+        const isValidEmail = credentials.email === "test@example.com";
+        const isValidPassword = credentials.password === "password";
+        
+        let isValidRole = true;
+        if (role === "admin" && credentials.idNumber !== "ADMIN001") {
+          isValidRole = false;
+        }
+        if (role === "agency_worker" && credentials.idNumber !== "WORKER001") {
+          isValidRole = false;
+        }
+        
+        if (isValidEmail && isValidPassword && isValidRole) {
           resolve({ success: true, role });
         } else {
-          reject(new Error("Invalid credentials"));
+          reject(new Error("Invalid credentials or ID number"));
         }
       }, 1000);
     });
@@ -247,9 +258,12 @@ export default function Login() {
 
           {/* Demo Credentials */}
           <div className="mt-6 p-3 bg-slate-700/50 rounded-lg">
-            <p className="text-xs text-slate-400 text-center">
-              Demo: test@example.com / password
-            </p>
+            <div className="text-xs text-slate-400 text-center space-y-1">
+              <p>Demo Credentials:</p>
+              <p>Email: test@example.com | Password: password</p>
+              {selectedRole === "admin" && <p>Admin ID: ADMIN001</p>}
+              {selectedRole === "agency_worker" && <p>Worker ID: WORKER001</p>}
+            </div>
           </div>
         </div>
       </motion.div>
