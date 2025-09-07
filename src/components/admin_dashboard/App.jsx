@@ -192,7 +192,7 @@ export default function SmartTouristDashboard() {
         data={data} 
       />
       
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto md:ml-0 ml-20">
         {renderView()}
       </main>
 

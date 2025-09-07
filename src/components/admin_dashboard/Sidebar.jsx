@@ -5,7 +5,7 @@ export default function Sidebar({ view, setView, data }) {
   const pendingQRCount = data.qrCart.filter(item => item.status === "pending").length;
 
   return (
-    <aside className="w-20 md:w-64 bg-slate-900 text-white min-h-screen p-3 flex flex-col gap-6">
+    <aside className="w-20 md:w-64 bg-slate-900 text-white h-screen p-3 flex flex-col gap-6 fixed md:relative z-30">
       <div className="flex items-center gap-3">
         <div className="bg-white/10 p-2 rounded-lg"> <Icon name="MapPin" size={20} /> </div>
         <div className="hidden md:block">
@@ -69,7 +69,7 @@ export default function Sidebar({ view, setView, data }) {
         </ul>
       </nav>
 
-      <div className="text-xs text-slate-400 md:text-sm">v2.0 • Admin</div>
+      <div className="text-xs text-slate-400 md:text-sm mt-auto">v2.0 • Admin</div>
     </aside>
   );
 }
