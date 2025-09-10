@@ -15,7 +15,7 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const roles = [
-    { value: "admin", label: "Admin", route: "/admin_dashboard" },
+    { value: "admin", label: "Agency Admin", route: "/admin_dashboard" },
     { value: "tourist", label: "Tourist", route: "/tourist_dashboard" },
     { value: "agency_worker", label: "Agency Worker", route: "/agency_dashboard" }
   ];
@@ -181,13 +181,13 @@ export default function Login() {
               {(selectedRole === "admin" || selectedRole === "agency_worker") && (
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {selectedRole === "admin" ? "Admin ID" : "Worker ID"}
+                    {selectedRole === "admin" ? "Agency Admin ID" : "Worker ID"}
                   </label>
                   <input
                     type="text"
                     value={formData.idNumber}
                     onChange={(e) => handleInputChange("idNumber", e.target.value)}
-                    placeholder={`Enter your ${selectedRole === "admin" ? "admin" : "worker"} ID`}
+                    placeholder={`Enter your ${selectedRole === "admin" ? "agency admin" : "worker"} ID`}
                     className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
                     required
                   />
@@ -261,7 +261,7 @@ export default function Login() {
             <div className="text-xs text-slate-400 text-center space-y-1">
               <p>Demo Credentials:</p>
               <p>Email: test@example.com | Password: password</p>
-              {selectedRole === "admin" && <p>Admin ID: ADMIN001</p>}
+              {selectedRole === "admin" && <p>Agency Admin ID: ADMIN001</p>}
               {selectedRole === "agency_worker" && <p>Worker ID: WORKER001</p>}
             </div>
           </div>
