@@ -7,6 +7,7 @@ export default function Sidebar({ view, setView, userInfo }) {
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: "ListChecks" },
     { id: "scanner", label: "QR Scanner", icon: "ScanLine" },
+    { id: "agencies", label: "Agencies", icon: "Building" },
     { id: "profile", label: "My Profile", icon: "User" },
     { id: "itinerary", label: "My Itinerary", icon: "MapPin" },
     { id: "contact", label: "Contact Help", icon: "Settings" },

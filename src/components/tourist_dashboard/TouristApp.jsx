@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import Sidebar from "./Sidebar.jsx";
 import Dashboard from "./Dashboard.jsx";
 import QRScanner from "./QRScanner.jsx";
+import Agencies from "./Agencies.jsx";
+import AgencyDetails from "./AgencyDetails.jsx";
 import UserInfoForm from "./UserInfoForm.jsx";
 import ItineraryList from "./ItineraryList.jsx";
 import ContactHelp from "./ContactHelp.jsx";
@@ -10,6 +12,7 @@ import PanicButton from "./PanicButton.jsx";
 
 export default function TouristApp() {
   const [view, setView] = useState("dashboard");
+  const [selectedAgency, setSelectedAgency] = useState(null);
   const [userInfo, setUserInfo] = useState({
     name: "",
     contactNumber: "",
@@ -31,6 +34,27 @@ export default function TouristApp() {
     { id: 2, name: "Howrah Bridge", completed: true, time: "2:00 PM" },
     { id: 3, name: "Indian Museum", completed: false, time: "4:00 PM" },
   ]);
+
+  const handleSelectAgency = (agency) => {
+    setSelectedAgency(agency);
+    setView("agency-details");
+  };
+
+  const handleBackToAgencies = () => {
+    setSelectedAgency(null);
+    setView("agencies");
+  };
+
+  const handleBookTrip = (trip) => {
+    // Add trip to itinerary
+    const newItineraryItem = {
+      id: Date.now(),
+      name: trip.name,
+      completed: false,
+      time: trip.startTime
+    };
+    setItinerary(prev => [...prev, newItineraryItem]);
+  };
 
   const handleQRScan = (data) => {
     console.log("QR Scanned:", data);
@@ -77,6 +101,16 @@ export default function TouristApp() {
         );
       case "scanner":
         return <QRScanner onScan={handleQRScan} />;
+      case "agencies":
+        return <Agencies onSelectAgency={handleSelectAgency} />;
+      case "agency-details":
+        return (
+          <AgencyDetails 
+            agency={selectedAgency}
+            onBack={handleBackToAgencies}
+            onBookTrip={handleBookTrip}
+          />
+        );
       case "profile":
         return (
           <UserInfoForm 
