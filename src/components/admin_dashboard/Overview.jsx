@@ -8,7 +8,7 @@ export default function Overview({ data, setView, setItineraryForm }) {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Dashboard Overview</h2>
+      <h2 className="text-2xl font-semibold mb-4">Agency Admin Dashboard Overview</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
         <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">

@@ -10,7 +10,7 @@ export default function Sidebar({ view, setView, data }) {
         <div className="bg-white/10 p-2 rounded-lg"> <Icon name="MapPin" size={20} /> </div>
         <div className="hidden md:block">
           <h1 className="font-bold text-lg">SmartTourist</h1>
-          <p className="text-xs text-slate-300">Admin Dashboard</p>
+          <p className="text-xs text-slate-300">Agency Admin Dashboard</p>
         </div>
       </div>
 

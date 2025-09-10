@@ -11,7 +11,7 @@ import WorkersPanel from "./WorkersPanel.jsx";
 import ItineraryCreator from "./ItineraryCreator.jsx";
 
 /*
-  Smart Tourist Admin Dashboard - QR Cart System:
+  Smart Tourist Agency Admin Dashboard - QR Cart System:
   1. QR Cart - Receive QR codes from external source
   2. Individual tourist approval for solo travelers
   3. Group detection via special ID for group travelers

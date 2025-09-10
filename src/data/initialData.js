@@ -1,4 +1,4 @@
-// Sample data structure - QR codes received from external dashboard
+// Sample data structure - QR codes received from external dashboard for Agency Admin
 export const initialData = {
   workers: [
     { id: "w-1", name: "Anita Sharma", phone: "+91-9876543210", specialization: "Heritage Sites" },

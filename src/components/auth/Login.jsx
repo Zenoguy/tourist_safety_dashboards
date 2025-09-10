@@ -9,20 +9,20 @@ export default function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    idNumber: ""
+    workerId: ""
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const roles = [
-    { value: "admin", label: "Admin", route: "/admin_dashboard" },
+    { value: "agency_admin", label: "Agency Admin", route: "/admin_dashboard" },
     { value: "tourist", label: "Tourist", route: "/tourist_dashboard" },
     { value: "agency_worker", label: "Agency Worker", route: "/agency_dashboard" }
   ];
 
   const handleRoleChange = (role) => {
     setSelectedRole(role);
-    setFormData({ email: "", password: "", idNumber: "" });
+    setFormData({ email: "", password: "", workerId: "" });
     setError("");
   };
 
@@ -43,16 +43,18 @@ export default function Login() {
       return;
     }
 
-    if (!formData.email || !formData.password) {
-      setError("Email and password are required");
-      setIsLoading(false);
-      return;
-    }
-
-    if ((selectedRole === "admin" || selectedRole === "agency_worker") && !formData.idNumber) {
-      setError("ID Number is required for this role");
-      setIsLoading(false);
-      return;
+    if (selectedRole === "agency_worker") {
+      if (!formData.workerId || !formData.password) {
+        setError("Worker ID and password are required");
+        setIsLoading(false);
+        return;
+      }
+    } else {
+      if (!formData.email || !formData.password) {
+        setError("Email and password are required");
+        setIsLoading(false);
+        return;
+      }
     }
 
     try {
@@ -72,22 +74,24 @@ export default function Login() {
   const mockLogin = async (credentials, role) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        // Mock validation with role-specific credentials
-        const isValidEmail = credentials.email === "test@example.com";
-        const isValidPassword = credentials.password === "password";
-        
-        let isValidRole = true;
-        if (role === "admin" && credentials.idNumber !== "ADMIN001") {
-          isValidRole = false;
-        }
-        if (role === "agency_worker" && credentials.idNumber !== "WORKER001") {
-          isValidRole = false;
-        }
-        
-        if (isValidEmail && isValidPassword && isValidRole) {
-          resolve({ success: true, role });
+        if (role === "agency_worker") {
+          // Agency Worker login with Worker ID + Password
+          const isValidWorker = credentials.workerId === "WORKER001" && credentials.password === "password";
+          if (isValidWorker) {
+            resolve({ success: true, role });
+          } else {
+            reject(new Error("Invalid Worker ID or password"));
+          }
         } else {
-          reject(new Error("Invalid credentials or ID number"));
+          // Agency Admin and Tourist login with Email + Password
+          const isValidEmail = credentials.email === "test@example.com";
+          const isValidPassword = credentials.password === "password";
+          
+          if (isValidEmail && isValidPassword) {
+            resolve({ success: true, role });
+          } else {
+            reject(new Error("Invalid email or password"));
+          }
         }
       }, 1000);
     });
@@ -97,6 +101,72 @@ export default function Login() {
     // TODO: Implement Google OAuth
     console.log("Google OAuth login - Backend integration needed");
     alert("Google OAuth integration will be implemented with backend");
+  };
+
+  const handleSignUp = () => {
+    if (selectedRole === "agency_admin") {
+      navigate("/agency-admin-signup");
+    } else if (selectedRole === "tourist") {
+      navigate("/signup");
+    }
+  };
+
+  const getFormFields = () => {
+    if (selectedRole === "agency_worker") {
+      return (
+        <>
+          <div>
+            <label className="block text-sm font-medium mb-2">Worker ID</label>
+            <input
+              type="text"
+              value={formData.workerId}
+              onChange={(e) => handleInputChange("workerId", e.target.value)}
+              placeholder="Enter your worker ID"
+              className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Password</label>
+            <input
+              type="password"
+              value={formData.password}
+              onChange={(e) => handleInputChange("password", e.target.value)}
+              placeholder="Enter your password"
+              className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+              required
+            />
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div>
+            <label className="block text-sm font-medium mb-2">Email</label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              placeholder="Enter your email"
+              className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Password</label>
+            <input
+              type="password"
+              value={formData.password}
+              onChange={(e) => handleInputChange("password", e.target.value)}
+              placeholder="Enter your password"
+              className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+              required
+            />
+          </div>
+        </>
+      );
+    }
   };
 
   return (
@@ -151,48 +221,7 @@ export default function Login() {
               onSubmit={handleLogin}
               className="space-y-4"
             >
-              {/* Email */}
-              <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  placeholder="Enter your email"
-                  className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
-                  required
-                />
-              </div>
-
-              {/* Password */}
-              <div>
-                <label className="block text-sm font-medium mb-2">Password</label>
-                <input
-                  type="password"
-                  value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
-                  placeholder="Enter your password"
-                  className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
-                  required
-                />
-              </div>
-
-              {/* ID Number for Admin/Agency Worker */}
-              {(selectedRole === "admin" || selectedRole === "agency_worker") && (
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {selectedRole === "admin" ? "Admin ID" : "Worker ID"}
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.idNumber}
-                    onChange={(e) => handleInputChange("idNumber", e.target.value)}
-                    placeholder={`Enter your ${selectedRole === "admin" ? "admin" : "worker"} ID`}
-                    className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
-                    required
-                  />
-                </div>
-              )}
+              {getFormFields()}
 
               {/* Error Message */}
               {error && (
@@ -245,13 +274,27 @@ export default function Login() {
                     <span className="text-slate-400 text-sm">Don't have an account? </span>
                     <button
                       type="button"
-                      onClick={() => navigate("/signup")}
+                      onClick={handleSignUp}
                       className="text-emerald-400 hover:text-emerald-300 text-sm font-medium"
                     >
                       Sign up
                     </button>
                   </div>
                 </>
+              )}
+
+              {/* Sign up option for Agency Admin */}
+              {selectedRole === "agency_admin" && (
+                <div className="text-center mt-4">
+                  <span className="text-slate-400 text-sm">Don't have an account? </span>
+                  <button
+                    type="button"
+                    onClick={handleSignUp}
+                    className="text-emerald-400 hover:text-emerald-300 text-sm font-medium"
+                  >
+                    Sign up
+                  </button>
+                </div>
               )}
             </motion.form>
           )}
@@ -260,9 +303,13 @@ export default function Login() {
           <div className="mt-6 p-3 bg-slate-700/50 rounded-lg">
             <div className="text-xs text-slate-400 text-center space-y-1">
               <p>Demo Credentials:</p>
-              <p>Email: test@example.com | Password: password</p>
-              {selectedRole === "admin" && <p>Admin ID: ADMIN001</p>}
-              {selectedRole === "agency_worker" && <p>Worker ID: WORKER001</p>}
+              {selectedRole === "agency_worker" ? (
+                <p>Worker ID: WORKER001 | Password: password</p>
+              ) : selectedRole ? (
+                <p>Email: test@example.com | Password: password</p>
+              ) : (
+                <p>Select a role to see demo credentials</p>
+              )}
             </div>
           </div>
         </div>
