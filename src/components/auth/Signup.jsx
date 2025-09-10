@@ -8,7 +8,10 @@ export default function Signup() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    name: "",
+    aadharNumber: "",
+    passportNumber: ""
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -24,8 +27,14 @@ export default function Signup() {
     setError("");
 
     // Validation
-    if (!formData.email || !formData.password || !formData.confirmPassword) {
-      setError("All fields are required");
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+      setError("Name, email, and password fields are required");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!formData.aadharNumber && !formData.passportNumber) {
+      setError("Either Aadhar Number or Passport Number must be provided");
       setIsLoading(false);
       return;
     }
@@ -38,6 +47,13 @@ export default function Signup() {
 
     if (formData.password.length < 6) {
       setError("Password must be at least 6 characters");
+      setIsLoading(false);
+      return;
+    }
+
+    // Validate Aadhar format if provided
+    if (formData.aadharNumber && !/^\d{12}$/.test(formData.aadharNumber.replace(/\s/g, ""))) {
+      setError("Aadhar number must be 12 digits");
       setIsLoading(false);
       return;
     }
@@ -60,7 +76,7 @@ export default function Signup() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Mock validation
-        if (userData.email && userData.password) {
+        if (userData.name && userData.email && userData.password && (userData.aadharNumber || userData.passportNumber)) {
           resolve({ success: true, user: userData });
         } else {
           reject(new Error("Signup failed"));
@@ -94,6 +110,19 @@ export default function Signup() {
 
           {/* Signup Form */}
           <form onSubmit={handleSignup} className="space-y-4">
+            {/* Name */}
+            <div>
+              <label className="block text-sm font-medium mb-2">Full Name</label>
+              <input
+                type="text"
+                value={formData.name}
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                placeholder="Enter your full name"
+                className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                required
+              />
+            </div>
+
             {/* Email */}
             <div>
               <label className="block text-sm font-medium mb-2">Email</label>
@@ -105,6 +134,35 @@ export default function Signup() {
                 className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
                 required
               />
+            </div>
+
+            {/* Aadhar Number */}
+            <div>
+              <label className="block text-sm font-medium mb-2">Aadhar Number</label>
+              <input
+                type="text"
+                value={formData.aadharNumber}
+                onChange={(e) => handleInputChange("aadharNumber", e.target.value)}
+                placeholder="Enter your 12-digit Aadhar number"
+                className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                maxLength="12"
+              />
+            </div>
+
+            {/* Passport Number */}
+            <div>
+              <label className="block text-sm font-medium mb-2">Passport Number</label>
+              <input
+                type="text"
+                value={formData.passportNumber}
+                onChange={(e) => handleInputChange("passportNumber", e.target.value)}
+                placeholder="Enter your passport number"
+                className="w-full p-3 rounded-lg bg-slate-700 border border-slate-600 focus:border-emerald-500 focus:outline-none transition-colors"
+              />
+            </div>
+
+            <div className="text-xs text-slate-400 bg-slate-700/50 p-2 rounded">
+              * Either Aadhar Number or Passport Number is required
             </div>
 
             {/* Password */}

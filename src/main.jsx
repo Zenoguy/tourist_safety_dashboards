@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/auth/Login.jsx";
 import Signup from "./components/auth/Signup.jsx";
+import AgencyAdminSignup from "./components/auth/AgencyAdminSignup.jsx";
 import AdminApp from "./components/admin_dashboard/App.jsx";
 import TouristApp from "./components/tourist_dashboard/TouristApp.jsx";
 import AgencyApp from "./components/agency_dashboard/AgencyApp.jsx";
@@ -18,6 +19,7 @@ function App() {
         {/* Authentication routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/agency-admin-signup" element={<AgencyAdminSignup />} />
         
         {/* Dashboard routes */}
         <Route path="/admin_dashboard" element={<AdminApp />} />
