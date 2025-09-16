@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatra Saathi - Smart Tourist Safety Monitoring System</title>
+    <meta name="description" content="AI-powered tourist safety monitoring system with blockchain digital ID, geo-fencing alerts, and real-time incident response capabilities.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-video {
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Custom particle animations */
+        .particle-float-1 {
+            animation: particleFloat1 8s ease-in-out infinite;
+        }
+        .particle-float-2 {
+            animation: particleFloat2 6s ease-in-out infinite;
+        }
+        .particle-float-3 {
+            animation: particleFloat3 10s ease-in-out infinite;
+        }
+        
+        @keyframes particleFloat1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -30px) rotate(90deg); }
+            50% { transform: translate(-15px, -60px) rotate(180deg); }
+            75% { transform: translate(-35px, -20px) rotate(270deg); }
+        }
+        
+        @keyframes particleFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -80px) scale(1.5); }
+        }
+        
+        @keyframes particleFloat3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(-50px, -40px) rotate(120deg) scale(0.8); }
+            66% { transform: translate(30px, -70px) rotate(240deg) scale(1.2); }
+        }
+        
+        .glow-pulse {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(236, 72, 153, 0.6), 0 0 60px rgba(139, 92, 246, 0.4); }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gradient-to-r from-violet-200 to-pink-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-7 4-4-6z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"></path>
+                        </svg>
+                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full animate-pulse"></div>
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text">Yatra Saathi</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-violet-600 transition-colors font-medium">Features</a>
+                    <a href="#solution" class="text-gray-700 hover:text-pink-600 transition-colors font-medium">Solution</a>
+                    <a href="#technology" class="text-gray-700 hover:text-indigo-600 transition-colors font-medium">Technology</a>
+                    <a href="./index.html" class="bg-gradient-to-r from-violet-600 to-pink-600 text-white px-6 py-2 rounded-lg hover:from-violet-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-pink-50 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left side - Content -->
+                <div class="text-left lg:text-left relative z-10">
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                        <span class="bg-gradient-to-r from-violet-600 via-purple-500 to-pink-600 bg-clip-text animate-pulse">Smart Tourist Safety</span>
+                        <br />
+                        <span class="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-600 bg-clip-text">Monitoring System</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 max-w-2xl">
+                        Revolutionary AI-powered platform leveraging Blockchain, Geo-Fencing, and IoT technologies 
+                        to ensure tourist safety with real-time monitoring and incident response capabilities.
+                    </p>
+                    
+                    <!-- Enhanced Stats with hover effects -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-2xl">
+                        <div class="text-center group cursor-pointer">
+                            <div class="flex justify-center mb-2 text-emerald-600 transform group-hover:scale-125 transition-all duration-300">
+                                <div class="relative">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div class="absolute -inset-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300"></div>
+                                </div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform duration-300">24/7</div>
+                            <div class="text-sm text-gray-600">Monitoring</div>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="flex justify-center mb-2 text-violet-600 transform group-hover:scale-125 transition-all duration-300">
+                                <div class="relative">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
+                                    </svg>
+                                    <div class="absolute -inset-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300"></div>
+                                </div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform duration-300">10+</div>
+                            <div class="text-sm text-gray-600">Languages</div>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="flex justify-center mb-2 text-pink-600 transform group-hover:scale-125 transition-all duration-300">
+                                <div class="relative">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                    <div class="absolute -inset-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300"></div>
+                                </div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform duration-300">100%</div>
+                            <div class="text-sm text-gray-600">Secure</div>
+                        </div>
+                        <div class="text-center group cursor-pointer">
+                            <div class="flex justify-center mb-2 text-cyan-600 transform group-hover:scale-125 transition-all duration-300">
+                                <div class="relative">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <div class="absolute -inset-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300"></div>
+                                </div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform duration-300">∞</div>
+                            <div class="text-sm text-gray-600">Coverage</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="./index.html" class="relative bg-gradient-to-r from-violet-600 to-pink-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-violet-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center shadow-lg overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-pink-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="relative z-10">Access Dashboard</span>
+                            <svg class="ml-2 w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+                        </a>
+                        <button onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })" class="relative border-2 border-violet-600 text-violet-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-violet-50 transition-all duration-300 transform hover:scale-105 overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                            <span class="relative z-10">Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right side - Enhanced Video with particles -->
+                <div class="relative">
+                    <!-- Floating particles around video -->
+                    <div class="absolute -inset-20 pointer-events-none">
+                        <div class="absolute top-0 left-0 w-4 h-4 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full particle-float-1 opacity-60"></div>
+                        <div class="absolute top-10 right-10 w-3 h-3 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full animate-bounce opacity-60" style="animation-delay: 0.5s; animation-duration: 2.5s;"></div>
+                        <div class="absolute top-20 left-5 w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-ping opacity-70" style="animation-delay: 1s;"></div>
+                        <div class="absolute bottom-20 right-0 w-5 h-5 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full particle-float-2 opacity-50"></div>
+                        <div class="absolute bottom-10 left-20 w-3 h-3 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full animate-bounce opacity-60" style="animation-delay: 2s; animation-duration: 4s;"></div>
+                        <div class="absolute top-5 right-20 w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-ping opacity-60" style="animation-delay: 2.5s;"></div>
+                        <div class="absolute bottom-5 right-15 w-4 h-4 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full particle-float-3 opacity-50"></div>
+                        <div class="absolute top-15 left-0 w-2 h-2 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full animate-bounce opacity-70" style="animation-delay: 3.5s; animation-duration: 2s;"></div>
+                    </div>
+
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-violet-100 via-purple-100 to-pink-100 p-4 transform hover:scale-105 transition-all duration-500 glow-pulse">
+                        <!-- Animated border glow -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 rounded-2xl opacity-30 blur-md animate-pulse"></div>
+                        
+                        <div class="relative">
+                            <video 
+                                class="hero-video w-full h-auto rounded-xl shadow-lg"
+                                autoplay 
+                                muted 
+                                loop 
+                                playsinline
+                            >
+                                <source src="src/data/Cinematic_Video_Generation_Yatra_Sathi.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        
+                        <!-- Enhanced video overlay elements -->
+                        <div class="absolute top-6 left-6">
+                            <div class="bg-white/90 backdrop-blur-md rounded-lg px-3 py-2 shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse"></div>
+                                    <span class="text-sm font-medium text-gray-700">Live Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-6 right-6">
+                            <div class="bg-gradient-to-r from-violet-600 to-pink-600 text-white rounded-lg px-3 py-2 shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                <span class="text-sm font-medium">AI Powered</span>
+                            </div>
+                        </div>
+
+                        <!-- Additional floating status indicators -->
+                        <div class="absolute top-6 right-6">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg animate-spin" style="animation-duration: 10s;">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-6 left-6">
+                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg px-2 py-1 shadow-lg animate-pulse">
+                                <span class="text-xs font-medium">24/7 Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced floating decorative elements with animations -->
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-ping" style="animation-duration: 4s;"></div>
+                    <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s; animation-duration: 3s;"></div>
+                    <div class="absolute top-1/2 -right-8 w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-30 animate-bounce" style="animation-delay: 2s; animation-duration: 6s;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Super enhanced background decoration with moving particles -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 overflow-hidden">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-gradient-to-r from-amber-300 via-orange-300 to-red-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 2s;"></div>
+            
+            <!-- Additional moving background particles -->
+            <div class="absolute top-1/4 left-1/4 w-40 h-40 bg-gradient-to-r from-emerald-200 to-teal-200 rounded-full mix-blend-multiply filter blur-2xl animate-bounce" style="animation-duration: 8s;"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-r from-rose-200 to-pink-200 rounded-full mix-blend-multiply filter blur-2xl animate-pulse" style="animation-duration: 6s;"></div>
+            <div class="absolute top-3/4 left-3/4 w-36 h-36 bg-gradient-to-r from-indigo-200 to-purple-200 rounded-full mix-blend-multiply filter blur-2xl animate-ping" style="animation-duration: 10s;"></div>
+        </div>
+
+        <!-- Floating geometric shapes -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+            <div class="absolute top-20 left-20 w-8 h-8 border-2 border-violet-400 rotate-45 animate-spin opacity-30" style="animation-duration: 15s;"></div>
+            <div class="absolute top-40 right-32 w-6 h-6 border-2 border-pink-400 rotate-12 animate-pulse opacity-40"></div>
+            <div class="absolute bottom-32 left-40 w-10 h-10 border-2 border-cyan-400 rotate-45 animate-bounce opacity-35" style="animation-duration: 4s;"></div>
+            <div class="absolute bottom-20 right-20 w-4 h-4 bg-amber-400 rotate-45 animate-ping opacity-50"></div>
+            <div class="absolute top-60 left-60 w-12 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rotate-12 animate-pulse opacity-30"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Comprehensive Safety Features</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our integrated platform combines cutting-edge technologies to provide unparalleled tourist safety and monitoring capabilities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Digital Tourist ID -->
+                <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-white/50">
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative">
+                            <img 
+                                src="src/data/img1.png" 
+                                alt="Digital Tourist ID"
+                                class="w-24 h-24 object-cover rounded-xl shadow-lg"
+                            />
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Digital Tourist ID</h3>
+                    <p class="text-gray-600 mb-4">Secure blockchain-based digital identity generation with KYC verification for safe travel</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-emerald-600 rounded-full mr-2"></div>
+                            Blockchain security
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-emerald-600 rounded-full mr-2"></div>
+                            Aadhaar/Passport integration
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-emerald-600 rounded-full mr-2"></div>
+                            Trip-based validity
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Smart Mobile App -->
+                <div class="bg-gradient-to-br from-violet-50 to-purple-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-white/50">
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative">
+                            <img 
+                                src="src/data/img3.png" 
+                                alt="Smart Mobile App"
+                                class="w-24 h-24 object-cover rounded-xl shadow-lg"
+                            />
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-violet-600 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Mobile App</h3>
+                    <p class="text-gray-600 mb-4">AI-powered safety scoring, geo-fencing alerts, and emergency panic button functionality</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-violet-600 rounded-full mr-2"></div>
+                            Tourist Safety Score
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-violet-600 rounded-full mr-2"></div>
+                            Geo-fencing alerts
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-violet-600 rounded-full mr-2"></div>
+                            Panic button with GPS
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AI Anomaly Detection -->
+                <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-white/50">
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative">
+                            <img 
+                                src="src/data/img2.png" 
+                                alt="AI Anomaly Detection"
+                                class="w-24 h-24 object-cover rounded-xl shadow-lg"
+                            />
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">AI Anomaly Detection</h3>
+                    <p class="text-gray-600 mb-4">Intelligent monitoring for unusual patterns, route deviations, and emergency situations</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-pink-600 rounded-full mr-2"></div>
+                            Route deviation alerts
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-pink-600 rounded-full mr-2"></div>
+                            Inactivity detection
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-pink-600 rounded-full mr-2"></div>
+                            Behavioral analysis
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Real-time Dashboard -->
+                <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-white/50">
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative">
+                            <img 
+                                src="src/data/img4.png" 
+                                alt="Real-time Dashboard"
+                                class="w-24 h-24 object-cover rounded-xl shadow-lg"
+                            />
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Real-time Dashboard</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive monitoring for tourism departments and law enforcement agencies</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-indigo-600 rounded-full mr-2"></div>
+                            Tourist heat maps
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-indigo-600 rounded-full mr-2"></div>
+                            Risk zone visualization
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-indigo-600 rounded-full mr-2"></div>
+                            Automated E-FIR
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- IoT Integration -->
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-white/50">
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative">
+                            <img 
+                                src="src/data/img5.png" 
+                                alt="IoT Integration"
+                                class="w-24 h-24 object-cover rounded-xl shadow-lg"
+                            />
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center shadow-lg">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">IoT Integration</h3>
+                    <p class="text-gray-600 mb-4">Smart bands and tags for enhanced safety in high-risk areas like caves and forests</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-amber-600 rounded-full mr-2"></div>
+                            Continuous monitoring
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-amber-600 rounded-full mr-2"></div>
+                            Health signals
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-amber-600 rounded-full mr-2"></div>
+                            Manual SOS feature
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Multilingual Support -->
+                <div class="bg-gradient-to-br from-cyan-50 to-sky-50 p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-white/50">
+                    <div class="mb-4 w-12 h-12 bg-cyan-600 bg-opacity-20 rounded-xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Multilingual Support</h3>
+                    <p class="text-gray-600 mb-4">Available in 10+ Indian languages with voice and text emergency access</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-cyan-600 rounded-full mr-2"></div>
+                            10+ Indian languages
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-cyan-600 rounded-full mr-2"></div>
+                            Voice emergency
+                        </li>
+                        <li class="flex items-center text-sm text-gray-500">
+                            <div class="w-1.5 h-1.5 bg-cyan-600 rounded-full mr-2"></div>
+                            Accessibility features
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section id="solution" class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">The Challenge</h2>
+                    <p class="text-lg mb-6 opacity-90">
+                        In regions like Northeast India, where tourism is a key economic driver, ensuring visitor safety is paramount. 
+                        Traditional policing and manual tracking methods are insufficient in remote and high-risk areas.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            Limited real-time monitoring capabilities
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            Inadequate emergency response systems
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            Lack of secure identity verification
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-2 h-2 bg-white rounded-full mr-3"></div>
+                            Communication barriers in remote areas
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Our Solution</h2>
+                    <p class="text-lg mb-6 opacity-90">
+                        Yatra Saathi provides a comprehensive digital ecosystem that leverages AI, Blockchain, and IoT 
+                        technologies to create a robust safety net for tourists.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/10 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">AI-Powered</h4>
+                            <p class="text-sm opacity-80">Smart anomaly detection and predictive alerts</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Blockchain Secure</h4>
+                            <p class="text-sm opacity-80">Tamper-proof digital identity system</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Real-time Monitoring</h4>
+                            <p class="text-sm opacity-80">24/7 surveillance and rapid response</p>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Multilingual</h4>
+                            <p class="text-sm opacity-80">Support for 10+ Indian languages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section id="technology" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Powered by Advanced Technology</h2>
+                <p class="text-xl text-gray-600">
+                    Built on a foundation of cutting-edge technologies for maximum security and reliability
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Artificial Intelligence</h3>
+                    <p class="text-gray-600">Advanced ML algorithms for pattern recognition, anomaly detection, and predictive analysis</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Blockchain Technology</h3>
+                    <p class="text-gray-600">Immutable digital identity records with end-to-end encryption and data privacy compliance</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">IoT Integration</h3>
+                    <p class="text-gray-600">Smart wearables and sensors for continuous monitoring in challenging environments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold mb-6">Ready to Transform Tourist Safety?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Join the revolution in smart tourism safety monitoring. Access our comprehensive dashboard system today.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="./index.html" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
+                    Access System
+                </a>
+                <a href="./index.html#/signup" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                    Register Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span class="text-xl font-bold">Yatra Saathi</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Smart Tourist Safety Monitoring & Incident Response System
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Features</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Digital Tourist ID</li>
+                        <li>AI Anomaly Detection</li>
+                        <li>Real-time Monitoring</li>
+                        <li>IoT Integration</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Technology</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Blockchain Security</li>
+                        <li>Geo-fencing Alerts</li>
+                        <li>Multilingual Support</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Access</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Tourist Dashboard</li>
+                        <li>Admin Portal</li>
+                        <li>Agency Management</li>
+                        <li>Emergency Services</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Yatra Saathi. All rights reserved. Built for tourist safety and security.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

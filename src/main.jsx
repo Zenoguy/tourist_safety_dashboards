@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LandingPage from "./components/landing/LandingPage.jsx";
 import Login from "./components/auth/Login.jsx";
 import Signup from "./components/auth/Signup.jsx";
 import AgencyAdminSignup from "./components/auth/AgencyAdminSignup.jsx";
@@ -13,8 +14,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Default route redirects to login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Default route shows landing page */}
+        <Route path="/" element={<LandingPage />} />
         
         {/* Authentication routes */}
         <Route path="/login" element={<Login />} />
